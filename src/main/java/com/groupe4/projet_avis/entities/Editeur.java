@@ -1,10 +1,18 @@
 package com.groupe4.projet_avis.entities;
 
-import java.util.*;
+import java.util.Set;
+
+import javax.persistence.Entity;
+
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * 
  */
+@Entity
+@Getter
+@Setter
 public class Editeur {
 
     /**

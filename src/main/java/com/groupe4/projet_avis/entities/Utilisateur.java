@@ -1,10 +1,16 @@
 package com.groupe4.projet_avis.entities;
 
-import java.util.*;
+import javax.persistence.Entity;
+
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * 
  */
+@Entity
+@Getter
+@Setter
 public class Utilisateur {
 
     /**
