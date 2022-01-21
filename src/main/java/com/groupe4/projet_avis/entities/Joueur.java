@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -30,6 +31,7 @@ public class Joueur extends Utilisateur {
     /**
      * 
      */
+    
     private Set<Avis> avis;
 
 }

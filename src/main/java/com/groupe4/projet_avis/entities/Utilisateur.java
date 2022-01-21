@@ -1,17 +1,20 @@
 package com.groupe4.projet_avis.entities;
 
 import javax.persistence.Entity;
-
-import lombok.Getter;
-import lombok.Setter;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 /**
  * 
  */
 @Entity
-@Getter
-@Setter
-public class Utilisateur {
+@Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Utilisateur {
 
     /**
      * Default constructor
@@ -22,6 +25,8 @@ public class Utilisateur {
     /**
      * 
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
     /**
