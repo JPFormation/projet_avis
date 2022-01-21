@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -98,9 +99,11 @@ public class Jeu {
 	 */
 	private Moderateur moderateur;
 
-	/**
-	 * 
-	 */
-	private Set<Avis> avis;
+
+    /**
+     * 
+     */
+    @OneToMany(mappedBy = "jeu")
+    private Set<Avis> avis;
 
 }
