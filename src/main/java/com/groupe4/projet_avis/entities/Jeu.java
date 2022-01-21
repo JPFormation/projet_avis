@@ -61,21 +61,21 @@ public class Jeu {
 	/**
 	 * 
 	 */
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn(name = "genre_id")
 	private Genre genre;
 
 	/**
 	 * 
 	 */
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn(name = "classification_id")
 	private Classification classification;
 
 	/**
 	 * 
 	 */
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn(name = "editeur_id")
 	private Editeur editeur;
 

@@ -41,7 +41,7 @@ public class Genre {
 	/**
 	 * 
 	 */
-	@OneToMany(mappedBy = "genre", cascade = { CascadeType.PERSIST })
+	@OneToMany(mappedBy = "genre")
 	private Set<Jeu> jeux;
 
 }

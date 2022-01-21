@@ -41,7 +41,7 @@ public class Plateforme {
 	/**
 	 * 
 	 */
-	@ManyToMany(mappedBy = "plateformes", cascade = CascadeType.PERSIST)
+	@ManyToMany(mappedBy = "plateformes")
 	private Set<Jeu> jeux;
 
 }
