@@ -31,7 +31,7 @@ public class Joueur extends Utilisateur {
     /**
      * 
      */
-    
+    @OneToMany(mappedBy = "joueur")
     private Set<Avis> avis;
 
 }
