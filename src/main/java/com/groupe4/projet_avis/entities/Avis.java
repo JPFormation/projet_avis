@@ -56,6 +56,8 @@ public class Avis {
     /**
      * 
      */
+    @ManyToOne
+    @JoinColumn(name = "moderateur_id")
     private Moderateur moderateur;
 
     /**

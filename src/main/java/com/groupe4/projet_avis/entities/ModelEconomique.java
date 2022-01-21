@@ -2,7 +2,6 @@ package com.groupe4.projet_avis.entities;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -41,7 +40,7 @@ public class ModelEconomique {
 	/**
 	 * 
 	 */
-	@OneToMany(mappedBy = "modelEconomique", cascade = { CascadeType.PERSIST })
+	@OneToMany(mappedBy = "modeleEconomique")
 	private Set<Jeu> jeux;
 
 }

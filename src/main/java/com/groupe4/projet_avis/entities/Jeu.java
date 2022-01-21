@@ -82,21 +82,25 @@ public class Jeu {
 	/**
 	 * 
 	 */
-	@ManyToMany(cascade = CascadeType.PERSIST)
-	@JoinTable(name = "jeu_plateforme", joinColumns = { @JoinColumn(name = "jeu_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "plateforme_id") })
+	@ManyToMany
+	@JoinTable(name = "jeu_plateforme", 
+	joinColumns = { @JoinColumn(name = "jeu_id") }, 
+	inverseJoinColumns = { @JoinColumn(name = "plateforme_id") }
+	)
 	private Set<Plateforme> plateformes;
 
 	/**
 	 * 
 	 */
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn(name = "modeleEconomique_id")
 	private ModelEconomique modeleEconomique;
 
 	/**
 	 * 
 	 */
+	@ManyToOne
+    @JoinColumn(name = "moderateur_id")
 	private Moderateur moderateur;
 
 
