@@ -3,10 +3,15 @@ package com.groupe4.projet_avis.entities;
 import java.time.LocalDate;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,72 +24,83 @@ import lombok.Setter;
 @Setter
 public class Jeu {
 
-    /**
-     * Default constructor
-     */
-    public Jeu() {
-    }
+	/**
+	 * Default constructor
+	 */
+	public Jeu() {
+	}
 
-    /**
-     * 
-     */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	/**
+	 * 
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    /**
-     * 
-     */
-    private String nom;
+	/**
+	 * 
+	 */
+	private String nom;
 
-    /**
-     * 
-     */
-    private String description;
+	/**
+	 * 
+	 */
+	private String description;
 
-    /**
-     * 
-     */
-    private LocalDate dateSortie;
+	/**
+	 * 
+	 */
+	private LocalDate dateSortie;
 
-    /**
-     * 
-     */
-    private String image;
+	/**
+	 * 
+	 */
+	private String image;
 
-    /**
-     * 
-     */
-    private Genre genre;
+	/**
+	 * 
+	 */
+	@ManyToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name = "genre_id")
+	private Genre genre;
 
-    /**
-     * 
-     */
-    private Classification classification;
+	/**
+	 * 
+	 */
+	@ManyToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name = "classification_id")
+	private Classification classification;
 
-    /**
-     * 
-     */
-    private Editeur editeur;
+	/**
+	 * 
+	 */
+	@ManyToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name = "editeur_id")
+	private Editeur editeur;
 
-    /**
-     * 
-     */
-    private Set<Plateforme> plateformes;
+	/**
+	 * 
+	 */
+	@ManyToMany(cascade = CascadeType.PERSIST)
+	@JoinTable(name = "jeu_plateforme", joinColumns = { @JoinColumn(name = "jeu_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "plateforme_id") })
+	private Set<Plateforme> plateformes;
 
-    /**
-     * 
-     */
-    private ModelEconomique modeleEconomique;
+	/**
+	 * 
+	 */
+	@ManyToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name = "modeleEconomique_id")
+	private ModelEconomique modeleEconomique;
 
-    /**
-     * 
-     */
-    private Moderateur moderateur;
+	/**
+	 * 
+	 */
+	private Moderateur moderateur;
 
-    /**
-     * 
-     */
-    private Set<Avis> avis;
+	/**
+	 * 
+	 */
+	private Set<Avis> avis;
 
 }
