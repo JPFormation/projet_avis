@@ -8,11 +8,18 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 /**
  * 
  */
 @Entity
 @Table(name = "users")
+@Getter
+@Setter
+@ToString
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Utilisateur {
 
