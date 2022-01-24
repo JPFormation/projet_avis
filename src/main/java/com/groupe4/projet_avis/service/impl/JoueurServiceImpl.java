@@ -49,7 +49,7 @@ public class JoueurServiceImpl implements JoueurService {
 	 * 
 	 */
 	@Override
-	public List<Joueur> getALLJoueurs() {
+	public List<Joueur> getAllJoueurs() {
 
 		/**
 		 * 

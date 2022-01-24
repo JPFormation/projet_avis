@@ -18,7 +18,7 @@ public interface JoueurService {
 	/**
 	 * 
 	 */
-	List<Joueur> getALLJoueurs();
+	List<Joueur> getAllJoueurs();
 
 	/**
 	 * 

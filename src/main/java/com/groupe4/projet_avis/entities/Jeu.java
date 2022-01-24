@@ -3,6 +3,7 @@ package com.groupe4.projet_avis.entities;
 import java.time.LocalDate;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -60,28 +61,28 @@ public class Jeu {
 	/**
 	 * 
 	 */
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.PERSIST})
 	@JoinColumn(name = "genre_id")
 	private Genre genre;
 
 	/**
 	 * 
 	 */
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.PERSIST})
 	@JoinColumn(name = "classification_id")
 	private Classification classification;
 
 	/**
 	 * 
 	 */
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.PERSIST})
 	@JoinColumn(name = "editeur_id")
 	private Editeur editeur;
 
 	/**
 	 * 
 	 */
-	@ManyToMany
+	@ManyToMany(cascade = {CascadeType.PERSIST})
 	@JoinTable(name = "jeu_plateforme", 
 	joinColumns = { @JoinColumn(name = "jeu_id") }, 
 	inverseJoinColumns = { @JoinColumn(name = "plateforme_id") }
@@ -91,14 +92,14 @@ public class Jeu {
 	/**
 	 * 
 	 */
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.PERSIST})
 	@JoinColumn(name = "modeleEconomique_id")
 	private ModelEconomique modeleEconomique;
 
 	/**
 	 * 
 	 */
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "moderateur_id")
 	private Moderateur moderateur;
 

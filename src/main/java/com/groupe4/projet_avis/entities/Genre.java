@@ -2,6 +2,7 @@ package com.groupe4.projet_avis.entities;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -40,7 +41,7 @@ public class Genre {
 	/**
 	 * 
 	 */
-	@OneToMany(mappedBy = "genre")
+	@OneToMany(mappedBy = "genre", cascade = {CascadeType.PERSIST})
 	private Set<Jeu> jeux;
 
 }
