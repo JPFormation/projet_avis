@@ -31,7 +31,7 @@ import com.groupe4.projet_avis.service.AvisService;
  * Json qui ne sont pas contenues dans des vues
  */
 @RestController
-@RequestMapping(path = "/api/avis", name = "app_avis") // prefixe general à toutes routes
+@RequestMapping(path = "/api", name = "app_avis") // prefixe general à toutes routes
 public class AvisController {
 
 	/**
