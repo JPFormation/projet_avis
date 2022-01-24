@@ -1,4 +1,4 @@
-package com.groupe4.projet_avis.cotroller;
+package com.groupe4.projet_avis.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.groupe4.projet_avis.Exceptions.JeuNotFoundException;
 import com.groupe4.projet_avis.entities.Jeu;
+import com.groupe4.projet_avis.exceptions.JeuNotFoundException;
 import com.groupe4.projet_avis.service.JeuService;
 
 /**
@@ -23,6 +24,7 @@ import com.groupe4.projet_avis.service.JeuService;
  *
  */
 @RestController
+@RequestMapping(path = "/api/jeux", name = "app_Jeux") // prefixe general Localhost:8080/api/avis
 public class JeuController {
 
 	/**
@@ -44,7 +46,7 @@ public class JeuController {
 	 * @param jeu
 	 * @return
 	 */
-	@PostMapping(path = "/jeux", name = "create")
+	@PostMapping (path = "/jeux", name = "create")
 	@ResponseStatus(HttpStatus.CREATED) // code 201
 	public Jeu add(@RequestBody Jeu jeu) {
 		return this.jeuService.saveJeu(jeu);
@@ -90,7 +92,7 @@ public class JeuController {
 	 * @param id
 	 * @throws JeuNotFoundException
 	 */
-	@DeleteMapping(path = "/jeux/{id}", name = "remove")
+	@DeleteMapping (path = "/jeux/{id}", name = "remove")
 	@ResponseStatus(HttpStatus.NO_CONTENT) // code
 	public void remove(@PathVariable long id) throws JeuNotFoundException {
 		this.jeuService.removeJeu(id);

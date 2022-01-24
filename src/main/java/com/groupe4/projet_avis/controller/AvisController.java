@@ -1,4 +1,4 @@
-package com.groupe4.projet_avis.cotroller;
+package com.groupe4.projet_avis.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.groupe4.projet_avis.Exceptions.AvisNotFoundException;
 import com.groupe4.projet_avis.entities.Avis;
+import com.groupe4.projet_avis.exceptions.AvisNotFoundException;
 import com.groupe4.projet_avis.service.AvisService;
 
 /**
@@ -30,6 +31,7 @@ import com.groupe4.projet_avis.service.AvisService;
  * Json qui ne sont pas contenues dans des vues
  */
 @RestController
+@RequestMapping(path = "/api", name = "app_avis") // prefixe general à toutes routes
 public class AvisController {
 
 	/**
@@ -53,8 +55,8 @@ public class AvisController {
 
 	/**
 	 * ********************************************************************** *
-	 * Appuyons nous sur les verbes du protocole http por realiser le CRUD * *
-	 ************************************************************************
+	 * Appuyons nous sur les verbes du protocole http pour realiser le CRUD
+	 **************************************************************************
 	 */
 
 	/**
