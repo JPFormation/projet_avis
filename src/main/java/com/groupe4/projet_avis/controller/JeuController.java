@@ -1,4 +1,4 @@
-package com.groupe4.projet_avis.cotroller;
+package com.groupe4.projet_avis.controller;
 
 import java.util.List;
 import java.util.Optional;
