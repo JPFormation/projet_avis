@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  *
  */
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class JeuNotFoundException extends Exception {
-	
+public class ModerateurNotFoundException extends Exception {
+
 	/**
 	 * 
 	 * @param message
 	 */
-	public JeuNotFoundException(String message) {
-		super(message);
-	}
+		public ModerateurNotFoundException(String message) {
+			super(message);
+		}
 }

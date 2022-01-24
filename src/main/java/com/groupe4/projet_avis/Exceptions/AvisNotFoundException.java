@@ -1,4 +1,4 @@
-package com.groupe4.projet_avis.Exceptions;
+package com.groupe4.projet_avis.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
