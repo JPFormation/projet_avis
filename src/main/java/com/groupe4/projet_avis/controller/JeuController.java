@@ -24,7 +24,7 @@ import com.groupe4.projet_avis.service.JeuService;
  *
  */
 @RestController
-@RequestMapping(path = "/api/jeux", name = "app_Jeux") // prefixe general Localhost:8080/api/avis
+@RequestMapping(path = "/api", name = "app_Jeux") // prefixe general Localhost:8080/api/avis
 public class JeuController {
 
 	/**
@@ -59,7 +59,7 @@ public class JeuController {
 	 */
 	@GetMapping(path = "/jeux", name = "List")
 	@ResponseStatus(HttpStatus.OK) // code http 200
-	public List<Jeu> List() {
+	public List<Jeu> list() {
 		return this.jeuService.getAllJeux();
 
 	}
