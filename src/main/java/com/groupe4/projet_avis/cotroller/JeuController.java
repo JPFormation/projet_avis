@@ -24,7 +24,7 @@ import com.groupe4.projet_avis.service.JeuService;
  *
  */
 @RestController
-@RequestMapping(path = "/api/jeux", name = "app_Jeux") // prefixe general Localhost:8080/api/avis
+@RequestMapping(path = "/api", name = "app_jeux") // prefixe general:localHost/api/jeux/
 public class JeuController {
 
 	/**
@@ -46,7 +46,7 @@ public class JeuController {
 	 * @param jeu
 	 * @return
 	 */
-	@PostMapping (path = "/jeux", name = "create")
+	@PostMapping(path = "/jeux", name = "create")
 	@ResponseStatus(HttpStatus.CREATED) // code 201
 	public Jeu add(@RequestBody Jeu jeu) {
 		return this.jeuService.saveJeu(jeu);
@@ -59,7 +59,7 @@ public class JeuController {
 	 */
 	@GetMapping(path = "/jeux", name = "List")
 	@ResponseStatus(HttpStatus.OK) // code http 200
-	public List<Jeu> List() {
+	public List<Jeu> list() {
 		return this.jeuService.getAllJeux();
 
 	}
@@ -70,6 +70,8 @@ public class JeuController {
 	 * @return
 	 * @throws JeuNotFoundException
 	 */
+	@GetMapping(path = "/jeux/{id}", name = "")
+	@ResponseStatus(HttpStatus.OK) // code http 200
 	public Optional<Jeu> read(@PathVariable Long id) throws JeuNotFoundException {
 		return this.jeuService.getOneJeu(id);
 	}
@@ -83,7 +85,7 @@ public class JeuController {
 	 */
 	@PutMapping(path = "/jeux/{id}", name = "update")
 	@ResponseStatus(HttpStatus.OK) // code
-	public Jeu update(@RequestBody Jeu jeu, @PathVariable long id) throws JeuNotFoundException {
+	public Jeu update(@RequestBody Jeu jeu, @PathVariable Long id) throws JeuNotFoundException {
 		return this.jeuService.updateJeu(jeu, id);
 	}
 
@@ -92,9 +94,9 @@ public class JeuController {
 	 * @param id
 	 * @throws JeuNotFoundException
 	 */
-	@DeleteMapping (path = "/jeux/{id}", name = "remove")
+	@DeleteMapping(path = "/jeux/{id}", name = "remove")
 	@ResponseStatus(HttpStatus.NO_CONTENT) // code
-	public void remove(@PathVariable long id) throws JeuNotFoundException {
+	public void remove(@PathVariable Long id) throws JeuNotFoundException {
 		this.jeuService.removeJeu(id);
 	}
 }

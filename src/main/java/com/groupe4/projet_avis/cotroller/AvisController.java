@@ -31,7 +31,7 @@ import com.groupe4.projet_avis.service.AvisService;
  * Json qui ne sont pas contenues dans des vues
  */
 @RestController
-@RequestMapping(path = "/api", name = "app_avis") // prefixe general à toutes routes
+@RequestMapping(path = "/api", name = "app_avis") // prefixe general:localHost/api/avis/
 public class AvisController {
 
 	/**
@@ -60,6 +60,7 @@ public class AvisController {
 	 */
 
 	/**
+	 * POST localHost/api/avis
 	 * 
 	 * PostMapping: indique le verbe à partir duquel nous pouvons faire appel à la
 	 * methode add en l'occurence ici: POST
@@ -73,6 +74,8 @@ public class AvisController {
 	 * 
 	 * @param avis
 	 * @return
+	 * 
+	 * 
 	 */
 	@PostMapping(path = "/avis", name = "create")
 	@ResponseStatus(HttpStatus.CREATED) // code 201
@@ -83,11 +86,15 @@ public class AvisController {
 	/**
 	 * Recuperation de la liste des avis
 	 * 
+	 * GET localHost/api/avis
+	 * 
 	 * @return
+	 * 
+	 * 
 	 */
 	@GetMapping(path = "/avis", name = "List")
 	@ResponseStatus(HttpStatus.OK) // code http 200
-	public List<Avis> List() {
+	public List<Avis> list() {
 		return this.avisService.getAllAvis();
 
 	}
@@ -95,10 +102,16 @@ public class AvisController {
 	/**
 	 * Recuperer un avis specifique
 	 * 
+	 * GET localHost/api/avis/id
+	 * 
 	 * @param id
 	 * @return
 	 * @throws AvisNotFoundException
+	 * 
+	 * 
 	 */
+	@GetMapping(path = "/avis/{id}", name = "")
+	@ResponseStatus(HttpStatus.OK) // code http 200
 	public Optional<Avis> read(@PathVariable Long id) throws AvisNotFoundException {
 		return this.avisService.getOneAvis(id);
 	}
@@ -108,26 +121,30 @@ public class AvisController {
 	 * url, automatiquement le controller va analysé l'url, en fonction de l'url, va
 	 * envoyer vers la methode update
 	 * 
+	 * PUT localHost/api/avis/id
+	 * 
 	 * @param avis
 	 * @param id
 	 * @return
 	 * @throws AvisNotFoundException
 	 */
 	@PutMapping(path = "/avis/{id}", name = "update")
-	@ResponseStatus(HttpStatus.OK) // code
-	public Avis update(@RequestBody Avis avis, @PathVariable long id) throws AvisNotFoundException {
+	@ResponseStatus(HttpStatus.OK) // code 200
+	public Avis update(@RequestBody Avis avis, @PathVariable Long id) throws AvisNotFoundException {
 		return this.avisService.updateAvis(avis, id);
 	}
 
 	/**
+	 * DELETE localHost/api/avis/id
+	 * 
 	 * Remove permet de supprimer un avis dans la base de données
 	 * 
 	 * @param id
 	 * @throws AvisNotFoundException
 	 */
 	@DeleteMapping(path = "/avis/{id}", name = "remove")
-	@ResponseStatus(HttpStatus.NO_CONTENT) // code
-	public void remove(@PathVariable long id) throws AvisNotFoundException {
+	@ResponseStatus(HttpStatus.NO_CONTENT) // code 204
+	public void remove(@PathVariable Long id) throws AvisNotFoundException {
 		this.avisService.removeAvis(id);
 	}
 
