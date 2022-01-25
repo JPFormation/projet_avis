@@ -50,8 +50,6 @@ import com.groupe4.projet_avis.service.JeuService;
 
 @RestController
 @RequestMapping(path = "/api", name = "app_Jeux") 
-@RequestMapping(path = "/api", name = "app_jeux") // prefixe general:localHost/api/jeux/
-
 public class JeuController {
 
 
@@ -142,9 +140,8 @@ public class JeuController {
 
 	 */
 	@GetMapping(path = "/jeux/{id}", name = "read")
-	@ResponseStatus(HttpStatus.OK) // code http 200
 
-	@ResponseStatus(HttpStatus.OK) // code http 200
+	@ResponseStatus(HttpStatus.OK)
 
 	public Optional<Jeu> read(@PathVariable Long id) throws JeuNotFoundException {
 
