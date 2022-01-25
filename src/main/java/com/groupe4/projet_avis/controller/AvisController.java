@@ -87,7 +87,7 @@ public class AvisController {
 	 */
 	@GetMapping(path = "/avis", name = "List")
 	@ResponseStatus(HttpStatus.OK) // code http 200
-	public List<Avis> List() {
+	public List<Avis> list() {
 		return this.avisService.getAllAvis();
 
 	}
@@ -99,7 +99,9 @@ public class AvisController {
 	 * @return
 	 * @throws AvisNotFoundException
 	 */
-	public Optional<Avis> read(@PathVariable Long id) throws AvisNotFoundException {
+	@GetMapping(path = "/avis/{id}")
+	@ResponseStatus(HttpStatus.OK) // code
+	public Optional<Avis> read(@PathVariable(value = "id") Long id) throws AvisNotFoundException {
 		return this.avisService.getOneAvis(id);
 	}
 
