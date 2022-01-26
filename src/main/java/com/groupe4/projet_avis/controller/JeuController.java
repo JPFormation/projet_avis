@@ -1,12 +1,8 @@
 package com.groupe4.projet_avis.controller;
 
-
-
 import java.util.List;
 
 import java.util.Optional;
-
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -30,15 +26,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import org.springframework.web.bind.annotation.RestController;
 
-
-
 import com.groupe4.projet_avis.entities.Jeu;
 
 import com.groupe4.projet_avis.exceptions.JeuNotFoundException;
 
 import com.groupe4.projet_avis.service.JeuService;
-
-
 
 /**
 
@@ -49,27 +41,23 @@ import com.groupe4.projet_avis.service.JeuService;
  */
 
 @RestController
-@RequestMapping(path = "/api", name = "app_Jeux") 
+@RequestMapping(path = "/api", name = "app_Jeux")
 public class JeuController {
 
-
-
 	/**
-
+	
 	 * 
-
+	
 	 */
 
 	private JeuService jeuService;
 
-
-
 	/**
-
 	 * 
-
+	 * 
+	 * 
 	 * @param jeuService
-
+	 * 
 	 */
 
 	@Autowired
@@ -80,16 +68,14 @@ public class JeuController {
 
 	}
 
-
-
 	/**
-
 	 * 
-
+	 * 
+	 * 
 	 * @param jeu
-
+	 * 
 	 * @return
-
+	 * 
 	 */
 
 	@PostMapping(path = "/jeux", name = "create")
@@ -100,18 +86,14 @@ public class JeuController {
 
 		return this.jeuService.saveJeu(jeu);
 
-
-
 	}
 
-
-
 	/**
-
 	 * 
-
+	 * 
+	 * 
 	 * @return
-
+	 * 
 	 */
 
 	@GetMapping(path = "/jeux", name = "List")
@@ -122,22 +104,18 @@ public class JeuController {
 
 		return this.jeuService.getAllJeux();
 
-
-
 	}
 
-
-
 	/**
-
 	 * 
-
+	 * 
+	 * 
 	 * @param id
-
+	 * 
 	 * @return
-
+	 * 
 	 * @throws JeuNotFoundException
-
+	 * 
 	 */
 	@GetMapping(path = "/jeux/{id}", name = "read")
 
@@ -149,20 +127,18 @@ public class JeuController {
 
 	}
 
-
-
 	/**
-
 	 * 
-
+	 * 
+	 * 
 	 * @param jeu
-
+	 * 
 	 * @param id
-
+	 * 
 	 * @return
-
+	 * 
 	 * @throws JeuNotFoundException
-
+	 * 
 	 */
 
 	@PutMapping(path = "/jeux/{id}", name = "update")
@@ -175,16 +151,14 @@ public class JeuController {
 
 	}
 
-
-
 	/**
-
 	 * 
-
+	 * 
+	 * 
 	 * @param id
-
+	 * 
 	 * @throws JeuNotFoundException
-
+	 * 
 	 */
 
 	@DeleteMapping(path = "/jeux/{id}", name = "remove")
