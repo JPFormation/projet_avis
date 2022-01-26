@@ -2,6 +2,7 @@ package com.groupe4.projet_avis.entities;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -56,14 +57,14 @@ public class Avis {
     /**
      * 
      */
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "moderateur_id")
     private Moderateur moderateur;
 
     /**
      * 
      */
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "jeu_id")
     private Jeu jeu;
 
@@ -71,7 +72,7 @@ public class Avis {
     /**
      * 
      */
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "joueur_id")
     private Joueur joueur;
 

@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -107,7 +109,8 @@ public class Jeu {
     /**
      * 
      */
-    @OneToMany(mappedBy = "jeu")
+	@JsonIgnore
+	@OneToMany(mappedBy = "jeu", cascade = {CascadeType.PERSIST})
     private Set<Avis> avis;
 
 }

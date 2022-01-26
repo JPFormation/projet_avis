@@ -6,6 +6,8 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,6 +33,7 @@ public class Joueur extends Utilisateur {
     /**
      * 
      */
+    @JsonIgnore
     @OneToMany(mappedBy = "joueur")
     private Set<Avis> avis;
 
