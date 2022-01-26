@@ -34,13 +34,5 @@ public class AuthController {
 		login.setToken(token);
 		return login;
 	}
-	
-	@GetMapping(value = "/test")
-	public String greeting() {
-		return "spring security works";
-	}
-	
-	
-	
-	
+		
 }
