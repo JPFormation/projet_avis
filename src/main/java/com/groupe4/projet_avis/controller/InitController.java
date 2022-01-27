@@ -148,9 +148,8 @@ public class InitController {
 		}
 
 		if (avisService.getAllAvis().isEmpty()) {
-			avisService.saveAvis(a1);
-			avisService.saveAvis(a2);
-			
+//			avisService.saveAvis(a1);
+//			avisService.saveAvis(a2);	
 		}
 	}
 

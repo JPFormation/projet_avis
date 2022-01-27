@@ -1,5 +1,6 @@
 package com.groupe4.projet_avis.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,6 +38,7 @@ public abstract class Utilisateur {
     /**
      * 
      */
+    @Column(unique=true)
     protected String pseudo;
 
     /**

@@ -27,6 +27,14 @@ public interface JoueurService {
 	 * @throws JoueurNotFoundException
 	 */
 	Optional<Joueur> getOneJoueur(Long id) throws JoueurNotFoundException;
+	
+	/**
+	 * 
+	 * @param String
+	 * @return
+	 * @throws JoueurNotFoundException
+	 */
+	Optional<Joueur> getJoueurByPseudo(String pseudo) throws JoueurNotFoundException;
 
 	/**
 	 * 

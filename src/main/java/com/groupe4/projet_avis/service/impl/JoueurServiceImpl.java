@@ -67,23 +67,12 @@ public class JoueurServiceImpl implements JoueurService {
 	@Override
 	public Optional<Joueur> getOneJoueur(Long id) throws JoueurNotFoundException {
 
-		/**
-		 * 
-		 * 
-		 */
 		Optional<Joueur> joueur = this.joueurRepository.findById(id);
 
-		/**
-		 * 
-		 */
 		if (!joueur.isPresent()) {
 			throw new JoueurNotFoundException(String.format("Joueur with id %s not found " + id));
 
 		}
-
-		/**
-		 * 
-		 */
 		return this.joueurRepository.findById(id);
 
 	}
@@ -97,45 +86,24 @@ public class JoueurServiceImpl implements JoueurService {
 	 */
 	@Override
 	public Joueur updateJoueur(Joueur joueur, Long id) throws JoueurNotFoundException {
-		
-		/**
-		 * 
-		 */
 		Optional<Joueur> joueurExist = this.joueurRepository.findById(id);
-		
-		/**
-		 * 
-		 */
 		if (!joueurExist.isPresent()) {
-			throw new JoueurNotFoundException(String.format(" Joueur with id %s not found" + id));
-			
+			throw new JoueurNotFoundException(String.format(" Joueur with id %s not found" + id));	
 		}
-		
-		/**
-		 * 
-		 */
 		return this.joueurRepository.save(joueur);
 	}
 	
 	@Override
 	public void removeJoueur(Long id) throws JoueurNotFoundException {
-
-		/**
-		 * 
-		 */
 		Optional<Joueur> joueur = this.joueurRepository.findById(id);
-
-		/**
-		 * 
-		 */
 		if (!joueur.isPresent()) {
 			throw new JoueurNotFoundException(String.format("Joueur with id %s not found " + id));
-
 		}
-
-		/**
-		 * 
-		 */
 		this.joueurRepository.delete(joueur.get());
+	}
+
+	@Override
+	public Optional<Joueur> getJoueurByPseudo(String pseudo) throws JoueurNotFoundException {
+		return Optional.ofNullable(this.joueurRepository.findByPseudo(pseudo));
 	}
 }

@@ -64,7 +64,7 @@ public class Avis {
     /**
      * 
      */
-    @ManyToOne(cascade = {CascadeType.PERSIST})
+    @ManyToOne
     @JoinColumn(name = "jeu_id")
     private Jeu jeu;
 

@@ -21,18 +21,11 @@ public class AuthController {
 	@Autowired
 	private JoueurService joueurService;
 	
-	private String token = "motdepasse";
 	
 	@PostMapping(value = "/register")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Joueur register(@RequestBody Joueur joueur) {
 		return joueurService.saveJoueur(joueur);
-	}
-	
-	@PostMapping(value = "/login")
-	public LoginDTO login(@RequestBody LoginDTO login) {
-		login.setToken(token);
-		return login;
 	}
 		
 }
