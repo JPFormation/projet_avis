@@ -8,11 +8,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class ProjetAvisApplication {
-	
-	  @Bean
-	    public PasswordEncoder encoder() {
-	        return new BCryptPasswordEncoder();
-	    }
+
+	@Bean
+	public PasswordEncoder encoder() {
+		return new BCryptPasswordEncoder();
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetAvisApplication.class, args);

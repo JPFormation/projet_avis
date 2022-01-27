@@ -1,5 +1,6 @@
 package com.groupe4.projet_avis.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +36,10 @@ public interface AvisService {
 	 * @throws AvisNotFoundException
 	 */
 	Avis updateAvis(Avis avis, long id) throws AvisNotFoundException;
+
+	List<Avis> avisNoteAsc(Avis avis, Float note);
+
+	List<Avis> avisDateEnvoiDesc(Avis avis, LocalDateTime dateEnvoi);
 
 	/**
 	 * Delete Avis

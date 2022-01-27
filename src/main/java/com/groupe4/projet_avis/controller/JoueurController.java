@@ -2,6 +2,7 @@ package com.groupe4.projet_avis.controller;
 
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,18 +17,36 @@ import com.groupe4.projet_avis.entities.Joueur;
 import com.groupe4.projet_avis.exceptions.JoueurNotFoundException;
 import com.groupe4.projet_avis.service.JoueurService;
 
+/**
+ * 
+ *
+ */
 @RestController
 @RequestMapping(path = "/api")
 public class JoueurController {
+	/**
+	 * 
+	 */
 	@Autowired
 	private JoueurService joueurService;
 	
+	/**
+	 * 
+	 * @param joueur
+	 * @return
+	 */
 	@PostMapping(value = "/joueur")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Joueur addJoueur(@RequestBody Joueur joueur) {
 		return joueurService.saveJoueur(joueur);
 	}
 	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 * @throws JoueurNotFoundException
+	 */
 	@GetMapping(value = "/joueur/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public Optional<Joueur> getJoueurById(@PathVariable(value = "id") Long id) throws JoueurNotFoundException {

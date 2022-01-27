@@ -1,5 +1,6 @@
 package com.groupe4.projet_avis.service.impl;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -88,8 +89,6 @@ public class AvisServiceImpl implements AvisService {
 		/**
 		 * Si un avis existe on recupere ce dernier sinon on leve une exception
 		 * 
-		 * 
-		 * 
 		 */
 		if (!avis.isPresent()) {
 			throw new AvisNotFoundException(String.format("Avis with id %s not found " + id));
@@ -127,6 +126,18 @@ public class AvisServiceImpl implements AvisService {
 		 * l'objet ne conttient pas un id c'est une création d'une nouvelle resource
 		 */
 		return this.avisRepository.save(avis);
+
+	}
+
+	@Override
+	public List<Avis> avisNoteAsc(Avis avis, Float note) {
+		return this.avisRepository.findAllByOrderByNoteAsc();
+
+	}
+
+	@Override
+	public List<Avis> avisDateEnvoiDesc(Avis avis, LocalDateTime dateEnvoi) {
+		return this.avisRepository.findAllByOrderByDateEnvoiAsc();
 
 	}
 

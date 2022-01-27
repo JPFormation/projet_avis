@@ -1,5 +1,6 @@
 package com.groupe4.projet_avis.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.groupe4.projet_avis.entities.Avis;
 import com.groupe4.projet_avis.exceptions.AvisNotFoundException;
+import com.groupe4.projet_avis.repository.AvisRepository;
 import com.groupe4.projet_avis.service.AvisService;
 
 /**
@@ -31,13 +33,15 @@ import com.groupe4.projet_avis.service.AvisService;
  * Json qui ne sont pas contenues dans des vues
  */
 @RestController
-@RequestMapping(path = "/api", name = "app_avis") // prefixe general:localHost/api/avis/
+@RequestMapping(path = "/api") 
 public class AvisController {
 
 	/**
 	 * Propriete AvisService
 	 */
 	private AvisService avisService;
+	@Autowired
+	private AvisRepository avisRepository;
 
 	/**
 	 * 
@@ -77,7 +81,7 @@ public class AvisController {
 	 * 
 	 * 
 	 */
-	@PostMapping(path = "/avis", name = "create")
+	@PostMapping(path = "/avis")
 	@ResponseStatus(HttpStatus.CREATED) // code 201
 	public Avis add(@RequestBody Avis avis) {
 		return this.avisService.saveAvis(avis);
@@ -92,10 +96,22 @@ public class AvisController {
 	 * 
 	 * 
 	 */
-	@GetMapping(path = "/avis", name = "List")
+	@GetMapping(path = "/avis")
 	@ResponseStatus(HttpStatus.OK) // code http 200
 	public List<Avis> list() {
 		return this.avisService.getAllAvis();
+
+	}
+	
+	@GetMapping(path = "/avisByNote")
+	public List<Avis> listAvis(Avis avis, Float note) {
+		return this.avisService.avisNoteAsc(avis, note);
+
+	}
+	
+	@GetMapping(path = "/datesEnvoi")
+	public List<Avis> DatesEnvoi(Avis avis, LocalDateTime dateEnvoi) {
+		return this.avisService.avisDateEnvoiDesc(avis, dateEnvoi);
 
 	}
 
@@ -128,7 +144,7 @@ public class AvisController {
 	 * @return
 	 * @throws AvisNotFoundException
 	 */
-	@PutMapping(path = "/avis/{id}", name = "update")
+	@PutMapping(path = "/avis/{id}")
 	@ResponseStatus(HttpStatus.OK) // code 200
 	public Avis update(@RequestBody Avis avis, @PathVariable Long id) throws AvisNotFoundException {
 		return this.avisService.updateAvis(avis, id);
@@ -142,7 +158,7 @@ public class AvisController {
 	 * @param id
 	 * @throws AvisNotFoundException
 	 */
-	@DeleteMapping(path = "/avis/{id}", name = "remove")
+	@DeleteMapping(path = "/avis/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT) // code 204
 	public void remove(@PathVariable Long id) throws AvisNotFoundException {
 		this.avisService.removeAvis(id);

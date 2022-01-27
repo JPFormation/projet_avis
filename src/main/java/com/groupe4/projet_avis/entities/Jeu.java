@@ -107,7 +107,7 @@ public class Jeu {
     /**
      * 
      */
-    @OneToMany(mappedBy = "jeu")
+    @OneToMany(mappedBy = "jeu")// cascade ?
     private Set<Avis> avis;
 
 }

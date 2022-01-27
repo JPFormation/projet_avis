@@ -57,14 +57,14 @@ public class Avis {
      * 
      */
     @ManyToOne
-    @JoinColumn(name = "moderateur_id")
+    @JoinColumn(name = "moderateur_id")// pas besoin ?
     private Moderateur moderateur;
 
     /**
      * 
      */
     @ManyToOne
-    @JoinColumn(name = "jeu_id")
+    @JoinColumn(name = "jeu_id")// pas besoin ?
     private Jeu jeu;
 
 
@@ -72,7 +72,7 @@ public class Avis {
      * 
      */
     @ManyToOne
-    @JoinColumn(name = "joueur_id")
+    @JoinColumn(name = "joueur_id")// pas besoin ?
     private Joueur joueur;
 
 }

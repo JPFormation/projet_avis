@@ -41,7 +41,7 @@ public class Classification {
     /**
      * 
      */
-    @OneToMany(mappedBy = "classification", cascade = {CascadeType.PERSIST})
+    @OneToMany(mappedBy = "classification")//, cascade = {CascadeType.PERSIST}
     private Set<Jeu> jeux;
 
 }
