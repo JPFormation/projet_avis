@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -61,28 +63,28 @@ public class Jeu {
 	/**
 	 * 
 	 */
-	@ManyToOne(cascade = {CascadeType.PERSIST})
+	@ManyToOne()
 	@JoinColumn(name = "genre_id")
 	private Genre genre;
 
 	/**
 	 * 
 	 */
-	@ManyToOne(cascade = {CascadeType.PERSIST})
+	@ManyToOne()
 	@JoinColumn(name = "classification_id")
 	private Classification classification;
 
 	/**
 	 * 
 	 */
-	@ManyToOne(cascade = {CascadeType.PERSIST})
+	@ManyToOne()
 	@JoinColumn(name = "editeur_id")
 	private Editeur editeur;
 
 	/**
 	 * 
 	 */
-	@ManyToMany(cascade = {CascadeType.PERSIST})
+	@ManyToMany()
 	@JoinTable(name = "jeu_plateforme", 
 	joinColumns = { @JoinColumn(name = "jeu_id") }, 
 	inverseJoinColumns = { @JoinColumn(name = "plateforme_id") }
@@ -92,14 +94,14 @@ public class Jeu {
 	/**
 	 * 
 	 */
-	@ManyToOne(cascade = {CascadeType.PERSIST})
+	@ManyToOne()
 	@JoinColumn(name = "modeleEconomique_id")
 	private ModelEconomique modeleEconomique;
 
 	/**
 	 * 
 	 */
-	@ManyToOne(cascade = {CascadeType.PERSIST})
+	@ManyToOne()
     @JoinColumn(name = "moderateur_id")
 	private Moderateur moderateur;
 
@@ -107,7 +109,8 @@ public class Jeu {
     /**
      * 
      */
-    @OneToMany(mappedBy = "jeu")// cascade ?
+	@JsonIgnore
+    @OneToMany(mappedBy = "jeu")
     private Set<Avis> avis;
 
 }

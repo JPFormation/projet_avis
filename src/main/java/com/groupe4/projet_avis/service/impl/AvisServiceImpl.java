@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.groupe4.projet_avis.entities.Avis;
+import com.groupe4.projet_avis.entities.Jeu;
+import com.groupe4.projet_avis.entities.Utilisateur;
 import com.groupe4.projet_avis.exceptions.AvisNotFoundException;
 import com.groupe4.projet_avis.repository.AvisRepository;
 import com.groupe4.projet_avis.service.AvisService;
@@ -21,6 +23,7 @@ public class AvisServiceImpl implements AvisService {
 	/**
 	 * Propriete de AvisRepository
 	 */
+	@Autowired
 	private AvisRepository avisRepository;
 
 	/**
@@ -29,7 +32,6 @@ public class AvisServiceImpl implements AvisService {
 	 * 
 	 * @param avisRepository
 	 */
-	@Autowired
 	public AvisServiceImpl(AvisRepository avisRepository) {
 		this.avisRepository = avisRepository;
 
@@ -112,7 +114,7 @@ public class AvisServiceImpl implements AvisService {
 	@Override
 	public Avis updateAvis(Avis avis, long id) throws AvisNotFoundException {
 		/**
-		 * On verifie d'abord si l'etudiant existe avant de lui mettre dans la base s'il
+		 * On verifie d'abord si l'avis existe avant de lui mettre dans la base s'il
 		 * n'existe pas on lève une exception
 		 */
 		Optional<Avis> avisExist = this.avisRepository.findById(id);
@@ -121,25 +123,62 @@ public class AvisServiceImpl implements AvisService {
 
 		}
 		/**
-		 * Si l'avis existe on fait la mise à jour methode save: permet ici de créer et
-		 * de mmettre à jour verifie: si l'objet contient un id c'est une mise à jour si
-		 * l'objet ne conttient pas un id c'est une création d'une nouvelle resource
+		 * Si l'avis existe on fait la mise à jour methode save: permet ici de mmettre à
+		 * jour verifie: si l'objet contient un id c'est une mise à jour si l'objet ne
+		 * conttient pas un id c'est une création d'une nouvelle resource
 		 */
-		return this.avisRepository.save(avis);
+		avisExist.get().setNote(avis.getNote());// je prends la note dans avis et je la set. get() permet d'acceder à
+												// l'objet Avis dans Optional
+		avisExist.get().setDescription(avis.getDescription());
 
+		return this.avisRepository.save(avisExist.get());
+
+	}
+	
+//	@Override
+//	public List<Avis> avisDateEnvoiDesc() {
+//		return this.avisRepository.findAllByOrderByDateEnvoidesc();
+//	}
+
+
+	@Override
+	public List<Avis> avisDateEnvoiAsc() {
+		return this.avisRepository.findAllByOrderByDateEnvoiAsc();
 	}
 
 	@Override
-	public List<Avis> avisNoteAsc(Avis avis, Float note) {
+	public List<Avis> avisNomDuJeuAsc() {
+
+		return avisRepository.findAllByOrderByJeuIdAsc();
+	}
+
+	@Override
+	public List<Avis> avisNomDuJeuDesc() {
+		return avisRepository.findAllByOrderByJeuIdDesc();
+	}
+
+	@Override
+	public List<Avis> avisPseudoDuJoueurAsc() {
+		return avisRepository.findAllByOrderByJoueurIdAsc();
+	}
+
+	@Override
+	public List<Avis> avisPseudoDuJoueurDesc() {
+		return avisRepository.findAllByOrderByJoueurIdDesc();
+	}
+	
+	@Override
+	public List<Avis> avisNoteAsc() {
 		return this.avisRepository.findAllByOrderByNoteAsc();
 
 	}
+//
+//	@Override
+//	public List<Avis> avisNoteDesc() {
+//		return this.avisRepository.findAllByOrderByNoteDesc();
+//	}
+	
 
-	@Override
-	public List<Avis> avisDateEnvoiDesc(Avis avis, LocalDateTime dateEnvoi) {
-		return this.avisRepository.findAllByOrderByDateEnvoiAsc();
-
-	}
 
 	/**
 	 * Delete Avis

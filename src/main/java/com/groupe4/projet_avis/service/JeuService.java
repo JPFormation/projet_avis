@@ -45,4 +45,13 @@ public interface JeuService {
 	 */
 	void removeJeu(Long id) throws JeuNotFoundException;
 
+
+	List<Jeu> jeuByNomDesc();
+
+	List<Jeu> jeuByNomAsc();
+
+	List<Jeu> jeuByEditeurDesc();
+
+	List<Jeu> jeuByEditeurAsc();
+
 }

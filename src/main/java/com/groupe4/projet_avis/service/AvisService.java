@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import com.groupe4.projet_avis.entities.Avis;
+import com.groupe4.projet_avis.entities.Jeu;
+import com.groupe4.projet_avis.entities.Utilisateur;
 import com.groupe4.projet_avis.exceptions.AvisNotFoundException;
 
 public interface AvisService {
@@ -37,9 +39,30 @@ public interface AvisService {
 	 */
 	Avis updateAvis(Avis avis, long id) throws AvisNotFoundException;
 
-	List<Avis> avisNoteAsc(Avis avis, Float note);
+	/**
+	 * 
+	 * @return
+	 */
+//	List<Avis> avisDateEnvoiDesc();
 
-	List<Avis> avisDateEnvoiDesc(Avis avis, LocalDateTime dateEnvoi);
+	/**
+	 * 
+	 * @return
+	 */
+
+	List<Avis> avisDateEnvoiAsc();
+
+	List<Avis> avisNomDuJeuAsc();
+
+	List<Avis> avisNomDuJeuDesc();
+	
+	List<Avis> avisPseudoDuJoueurAsc();
+	
+	List<Avis> avisPseudoDuJoueurDesc();
+
+	List<Avis> avisNoteAsc();
+
+
 
 	/**
 	 * Delete Avis
@@ -47,6 +70,9 @@ public interface AvisService {
 	 * @param id
 	 * @throws AvisNotFoundException
 	 */
-	void removeAvis(Long id) throws AvisNotFoundException;
+	public void removeAvis(Long id) throws AvisNotFoundException;
+
+
+
 
 }

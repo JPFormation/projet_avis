@@ -33,12 +33,13 @@ import com.groupe4.projet_avis.service.AvisService;
  * Json qui ne sont pas contenues dans des vues
  */
 @RestController
-@RequestMapping(path = "/api") 
+@RequestMapping(path = "/api")
 public class AvisController {
 
 	/**
 	 * Propriete AvisService
 	 */
+	@Autowired
 	private AvisService avisService;
 	@Autowired
 	private AvisRepository avisRepository;
@@ -51,7 +52,6 @@ public class AvisController {
 	 * 
 	 * @param avisService
 	 */
-	@Autowired
 	public AvisController(AvisService avisService) {
 
 		this.avisService = avisService;
@@ -102,18 +102,46 @@ public class AvisController {
 		return this.avisService.getAllAvis();
 
 	}
-	
-	@GetMapping(path = "/avisByNote")
-	public List<Avis> listAvis(Avis avis, Float note) {
-		return this.avisService.avisNoteAsc(avis, note);
 
+	@GetMapping(path = "/avisByDatesEnvoiAsc")
+	public List<Avis> DatesEnvoiAsc() {
+		return this.avisService.avisDateEnvoiAsc();
 	}
-	
-	@GetMapping(path = "/datesEnvoi")
-	public List<Avis> DatesEnvoi(Avis avis, LocalDateTime dateEnvoi) {
-		return this.avisService.avisDateEnvoiDesc(avis, dateEnvoi);
 
+//	@GetMapping(path = "/avisByDatesEnvoiDesc")
+//	public List<Avis> avisDatesEnvoiDesc() {
+//		return this.avisService.avisDateEnvoiDesc();
+//	}
+
+	@GetMapping(path = "/avisByNomDuJeuAsc")
+	public List<Avis> avisNomDuJeuAsc() {
+		return this.avisService.avisNomDuJeuAsc();
 	}
+//
+//	@GetMapping(path = "/avisByNomDuJeuDesc")
+//	public List<Avis> avisNomDuJeuDesc() {
+//		return this.avisService.avisNomDuJeuDesc();
+//	}
+//
+	@GetMapping(path = "/avisByPseudoDuJoueurAsc")
+	public List<Avis> avisPseudoDuJoueurAsc() {
+		return this.avisService.avisPseudoDuJoueurAsc();
+	}
+//
+	@GetMapping(path = "/avisByPseudoDuJoueurDesc")
+	public List<Avis> avisPseudoDuJoueurDesc() {
+		return this.avisService.avisPseudoDuJoueurDesc();
+	}
+
+	@GetMapping(path = "/avisByNoteAsc")
+	public List<Avis> listAvisAsc() {
+		return this.avisService.avisNoteAsc();
+	}
+//
+//	@GetMapping(path = "/avisByNoteDesc")
+//	public List<Avis> listAvisDesc() {
+//		return this.avisService.avisNoteDesc();
+//	}
 
 	/**
 	 * Recuperer un avis specifique

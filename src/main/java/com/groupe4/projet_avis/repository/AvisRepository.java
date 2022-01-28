@@ -1,6 +1,7 @@
 package com.groupe4.projet_avis.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.groupe4.projet_avis.entities.Avis;
 import com.groupe4.projet_avis.entities.Jeu;
 import com.groupe4.projet_avis.entities.Joueur;
+import com.groupe4.projet_avis.entities.Utilisateur;
 
 /**
  * Nous avons une Classe:Avis et le type de l'identifiant:Long en paramettre de
@@ -20,18 +22,20 @@ import com.groupe4.projet_avis.entities.Joueur;
 @Repository
 public interface AvisRepository extends JpaRepository<Avis, Long> {
 
+//	List<Avis> findAllByOrderByDateEnvoidesc();
+
 	List<Avis> findAllByOrderByDateEnvoiAsc();
+
+	List<Avis> findAllByOrderByJeuIdAsc();
+
+	List<Avis> findAllByOrderByJeuIdDesc();
 //
-//	List<Avis> findByJeu(Jeu jeu);
+	List<Avis> findAllByOrderByJoueurIdAsc();
 //
-//	List<Avis> findByJoueur(Joueur joueur);
+	List<Avis> findAllByOrderByJoueurIdDesc();
 
 	List<Avis> findAllByOrderByNoteAsc();
 //
-//	List<Avis> findImageAvis();
-//
-//	List<Avis> findAllStatusAvis();
-//
-//	List<Avis> findAllOperationAvis();
+//	List<Avis> findAllByOrderByNoteDesc();
 
 }

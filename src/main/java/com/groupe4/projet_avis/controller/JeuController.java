@@ -1,45 +1,28 @@
 package com.groupe4.projet_avis.controller;
 
 import java.util.List;
-
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.HttpStatus;
-
 import org.springframework.web.bind.annotation.DeleteMapping;
-
 import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.web.bind.annotation.PathVariable;
-
 import org.springframework.web.bind.annotation.PostMapping;
-
 import org.springframework.web.bind.annotation.PutMapping;
-
 import org.springframework.web.bind.annotation.RequestBody;
-
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.ResponseStatus;
-
 import org.springframework.web.bind.annotation.RestController;
 
+import com.groupe4.projet_avis.entities.Avis;
 import com.groupe4.projet_avis.entities.Jeu;
-
 import com.groupe4.projet_avis.exceptions.JeuNotFoundException;
-
 import com.groupe4.projet_avis.service.JeuService;
 
 /**
-
  * 
-
  *
-
  */
-
 @RestController
 @RequestMapping(path = "/api")
 public class JeuController {
@@ -54,13 +37,8 @@ public class JeuController {
 
 	/**
 	 * 
-	 * 
-	 * 
 	 * @param jeuService
-	 * 
 	 */
-
-	
 	public JeuController(JeuService jeuService) {
 
 		this.jeuService = jeuService;
@@ -69,14 +47,9 @@ public class JeuController {
 
 	/**
 	 * 
-	 * 
-	 * 
 	 * @param jeu
-	 * 
 	 * @return
-	 * 
 	 */
-
 	@PostMapping(path = "/jeux")
 	@ResponseStatus(HttpStatus.CREATED) // code 201
 	public Jeu add(@RequestBody Jeu jeu) {
@@ -87,12 +60,8 @@ public class JeuController {
 
 	/**
 	 * 
-	 * 
-	 * 
 	 * @return
-	 * 
 	 */
-
 	@GetMapping(path = "/jeux")
 	@ResponseStatus(HttpStatus.OK) // code http 200
 	public List<Jeu> list() {
@@ -103,14 +72,9 @@ public class JeuController {
 
 	/**
 	 * 
-	 * 
-	 * 
 	 * @param id
-	 * 
 	 * @return
-	 * 
 	 * @throws JeuNotFoundException
-	 * 
 	 */
 	@GetMapping(path = "/jeux/{id}")
 	@ResponseStatus(HttpStatus.OK)
@@ -119,21 +83,17 @@ public class JeuController {
 		return this.jeuService.getOneJeu(id);
 
 	}
+	
+	
+	
 
 	/**
 	 * 
-	 * 
-	 * 
 	 * @param jeu
-	 * 
 	 * @param id
-	 * 
 	 * @return
-	 * 
 	 * @throws JeuNotFoundException
-	 * 
 	 */
-
 	@PutMapping(path = "/jeux/{id}")
 	@ResponseStatus(HttpStatus.OK) // code
 	public Jeu update(@RequestBody Jeu jeu, @PathVariable Long id) throws JeuNotFoundException {
@@ -144,14 +104,9 @@ public class JeuController {
 
 	/**
 	 * 
-	 * 
-	 * 
 	 * @param id
-	 * 
 	 * @throws JeuNotFoundException
-	 * 
 	 */
-
 	@DeleteMapping(path = "/jeux/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT) // code
 	public void remove(@PathVariable Long id) throws JeuNotFoundException {
@@ -159,5 +114,27 @@ public class JeuController {
 		this.jeuService.removeJeu(id);
 
 	}
+	
+	
+
+	@GetMapping(path = "/jeuxByNomDesc")
+	public List<Jeu> jeuNomDesc() {
+		return this.jeuService.jeuByNomDesc();
+	}
+	
+	@GetMapping(path = "/jeuxByNomAsc")
+	public List<Jeu> jeuNomAsc() {
+		return this.jeuService.jeuByNomAsc();
+	}
+	
+	@GetMapping(path = "/jeuxByEditeurDesc")
+	public List<Jeu> jeuEditeurDesc() {
+		return this.jeuService.jeuByEditeurDesc();
+	}
+	@GetMapping(path = "/jeuxByEditeurAsc")
+	public List<Jeu> jeuEditeurAsc() {
+		return this.jeuService.jeuByEditeurAsc();
+	}
+
 
 }

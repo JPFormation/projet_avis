@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,6 +44,7 @@ public class Avis {
     /**
      * 
      */
+    @CreationTimestamp
     private LocalDateTime dateEnvoi;
 
     /**
@@ -51,28 +55,29 @@ public class Avis {
     /**
      * 
      */
+    @UpdateTimestamp 
     private LocalDateTime dateModeration;
 
     /**
      * 
      */
-    @ManyToOne
-    @JoinColumn(name = "moderateur_id")// pas besoin ?
+    @ManyToOne()
+    @JoinColumn(name = "moderateur_id")
     private Moderateur moderateur;
 
     /**
      * 
      */
-    @ManyToOne
-    @JoinColumn(name = "jeu_id")// pas besoin ?
+    @ManyToOne()
+    @JoinColumn(name = "jeu_id")
     private Jeu jeu;
 
 
     /**
      * 
      */
-    @ManyToOne
-    @JoinColumn(name = "joueur_id")// pas besoin ?
+    @ManyToOne()
+    @JoinColumn(name = "joueur_id")
     private Joueur joueur;
 
 }

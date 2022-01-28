@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,6 +43,7 @@ public class Genre {
 	/**
 	 * 
 	 */
+	@JsonIgnore
 	@OneToMany(mappedBy = "genre", cascade = {CascadeType.PERSIST})
 	private Set<Jeu> jeux;
 
