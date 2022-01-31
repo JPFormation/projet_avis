@@ -17,14 +17,14 @@ public interface AvisService {
 	Avis saveAvis(Avis avis);
 
 	/**
-	 * Recupere la liste des avis
+	 * Récupère la liste des avis
 	 * 
 	 * @return list des avis
 	 */
 	List<Avis> getAllAvis();
 
 	/**
-	 * recupere les details d'un avis specifique
+	 * Récupère les details d'un avis specifique
 	 * 
 	 * @throws AvisNotFoundException
 	 */
@@ -38,17 +38,6 @@ public interface AvisService {
 	 * @throws AvisNotFoundException
 	 */
 	Avis updateAvis(Avis avis, long id) throws AvisNotFoundException;
-
-	/**
-	 * 
-	 * @return
-	 */
-//	List<Avis> avisDateEnvoiDesc();
-
-	/**
-	 * 
-	 * @return
-	 */
 
 	List<Avis> avisDateEnvoiAsc();
 

@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,9 +41,10 @@ public class Plateforme {
 	private String nom;
 
 	/**
-	 * 
+	 * JPA gère les relations many to many en créant une table de jointure
 	 */
-	@ManyToMany(mappedBy = "plateformes", cascade = {CascadeType.PERSIST})
+	@JsonIgnore
+	@ManyToMany(mappedBy = "plateformes")
 	private Set<Jeu> jeux;
 
 }

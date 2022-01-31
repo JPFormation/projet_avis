@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,63 +22,85 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 public class Avis {
 
-    /**
-     * Default constructor
-     */
-    public Avis() {
-    }
+	/**
+	 * Default constructor
+	 */
+	public Avis() {
+	}
 
-    /**
-     * 
-     */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	/**
+	 * Constructeur pour la création d'un avis 
+	 * 
+	 * @param description
+	 * @param dateEnvoi
+	 * @param note
+	 * @param dateModeration
+	 * @param moderateur
+	 * @param jeu
+	 * @param joueur
+	 */
+	public Avis(String description, LocalDateTime dateEnvoi, Float note, LocalDateTime dateModeration,
+			Moderateur moderateur, Jeu jeu, Joueur joueur) {
+		super();
+		this.description = description;
+		this.dateEnvoi = dateEnvoi;
+		this.note = note;
+		this.dateModeration = dateModeration;
+		this.moderateur = moderateur;
+		this.jeu = jeu;
+		this.joueur = joueur;
+	}
 
-    /**
-     * 
-     */
-    private String description;
+	/**
+	 * 
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    /**
-     * 
-     */
-    @CreationTimestamp
-    private LocalDateTime dateEnvoi;
+	/**
+	 * 
+	 */
+	private String description;
 
-    /**
-     * 
-     */
-    private Float note;
+	/**
+	 * 
+	 */
+	@CreationTimestamp
+	private LocalDateTime dateEnvoi;
 
-    /**
-     * 
-     */
-    @UpdateTimestamp 
-    private LocalDateTime dateModeration;
+	/**
+	 * 
+	 */
+	private Float note;
 
-    /**
-     * 
-     */
-    @ManyToOne()
-    @JoinColumn(name = "moderateur_id")
-    private Moderateur moderateur;
+	/**
+	 * 
+	 */
+	@UpdateTimestamp
+	private LocalDateTime dateModeration;
 
-    /**
-     * 
-     */
-    @ManyToOne()
-    @JoinColumn(name = "jeu_id")
-    private Jeu jeu;
+	/**
+	 * 
+	 */
+	@ManyToOne()
+	@JoinColumn(name = "moderateur_id")
+	private Moderateur moderateur;
 
+	/**
+	 * 
+	 */
+	@ManyToOne()
+	@JoinColumn(name = "jeu_id")
+	private Jeu jeu;
 
-    /**
-     * 
-     */
-    @ManyToOne()
-    @JoinColumn(name = "joueur_id")
-    private Joueur joueur;
+	/**
+	 * 
+	 */
+	@ManyToOne()
+	private Joueur joueur;
 
 }

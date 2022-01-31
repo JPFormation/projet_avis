@@ -22,32 +22,60 @@ import lombok.ToString;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Utilisateur {
 
-    /**
-     * Default constructor
-     */
-    public Utilisateur() {
-    }
+	/**
+	 * Default constructor
+	 */
+	public Utilisateur() {
+	}
 
-    /**
-     * 
-     */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id;
+	/**
+	 * 
+	 * @param pseudo
+	 * @param motDePasse
+	 * @param email
+	 */
+	public Utilisateur(String pseudo, String motDePasse, String email) {
+		super();
+		this.pseudo = pseudo;
+		this.motDePasse = motDePasse;
+		this.email = email;
+	}
 
-    /**
-     * 
-     */
-    protected String pseudo;
+	/**
+	 * 
+	 * @param id
+	 * @param pseudo
+	 * @param motDePasse
+	 * @param email
+	 */
+	public Utilisateur(Long id, String pseudo, String motDePasse, String email) {
+		super();
+		this.id = id;
+		this.pseudo = pseudo;
+		this.motDePasse = motDePasse;
+		this.email = email;
+	}
 
-    /**
-     * 
-     */
-    protected String motDePasse;
+	/**
+	 * 
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	protected Long id;
 
-    /**
-     * 
-     */
-    protected String email;
+	/**
+	 * 
+	 */
+	protected String pseudo;
+
+	/**
+	 * 
+	 */
+	protected String motDePasse;
+
+	/**
+	 * 
+	 */
+	protected String email;
 
 }

@@ -1,6 +1,7 @@
 package com.groupe4.projet_avis.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,6 +14,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -53,6 +57,7 @@ public class Jeu {
 	/**
 	 * 
 	 */
+    @UpdateTimestamp // à supprimer
 	private LocalDate dateSortie;
 
 	/**
@@ -89,7 +94,7 @@ public class Jeu {
 	joinColumns = { @JoinColumn(name = "jeu_id") }, 
 	inverseJoinColumns = { @JoinColumn(name = "plateforme_id") }
 	)
-	private Set<Plateforme> plateformes;
+	private List<Plateforme> plateformes;
 
 	/**
 	 * 
@@ -110,7 +115,7 @@ public class Jeu {
      * 
      */
 	@JsonIgnore
-    @OneToMany(mappedBy = "jeu")
-    private Set<Avis> avis;
+    @OneToMany(mappedBy = "jeu", cascade =CascadeType.REMOVE)
+    private List<Avis> avis;
 
 }

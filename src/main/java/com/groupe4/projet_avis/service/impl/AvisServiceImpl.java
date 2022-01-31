@@ -123,7 +123,8 @@ public class AvisServiceImpl implements AvisService {
 
 		}
 		/**
-		 * Si l'avis existe on fait la mise à jour methode save: permet ici de mmettre à
+		 * Si l'avis existe on fait la mise à jour
+		 *  methode save: permet ici de mmettre à
 		 * jour verifie: si l'objet contient un id c'est une mise à jour si l'objet ne
 		 * conttient pas un id c'est une création d'une nouvelle resource
 		 */

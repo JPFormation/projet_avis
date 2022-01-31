@@ -44,7 +44,7 @@ public class ModelEconomique {
 	 * 
 	 */
 	@JsonIgnore
-	@OneToMany(mappedBy = "modeleEconomique", cascade = {CascadeType.PERSIST})
+	@OneToMany(mappedBy = "modeleEconomique")
 	private Set<Jeu> jeux;
 
 }
