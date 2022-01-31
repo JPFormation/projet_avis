@@ -11,6 +11,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.groupe4.projet_avis.entities.Avis;
 import com.groupe4.projet_avis.entities.Classification;
 import com.groupe4.projet_avis.entities.Editeur;
 import com.groupe4.projet_avis.entities.Genre;
@@ -43,16 +44,15 @@ public class InitController {
 	@Autowired
 	private AvisService avisService;
 	@Autowired
-	private GenreRepository genreService; 
+	private GenreRepository genreService;
 	@Autowired
 	private ClassificationRepository classificationService;
 	@Autowired
-	private ModeleconomiqueRepository modeleconomiqueService; 
+	private ModeleconomiqueRepository modeleconomiqueService;
 	@Autowired
 	private EditeurRepository editeurService;
 	@Autowired
 	private PlateformeRepository plateformeService;
-	
 
 	@PostConstruct
 	private void init() {
@@ -96,6 +96,8 @@ public class InitController {
 			Genre t2 = new Genre();
 			t2.setNom("Racing");
 			
+			
+			
 			// perister des genres avant de les attribuer à un jeu 
 			genreService.save(t1);
 			genreService.save(t2);
@@ -114,6 +116,12 @@ public class InitController {
 			p1.setNom("PlayStation");
 			Plateforme p2 = new Plateforme();
 			p2.setNom("Xbox");
+			
+			// créer avis
+			Avis a1 = new Avis();
+			a1.setDescription("good");
+			a1.setNote(20);
+			avisService.saveAvis(a1);
 			
 			// perister des plateformes avant de les attribuer à un jeu 
 			plateformeService.save(p1);
@@ -143,6 +151,7 @@ public class InitController {
 			g1.setNom("Medal of Honour");
 			g1.setEditeur(e1);
 			g1.setGenre(t1);
+			
 			g1.setModeleEconomique(m1);
 			g1.setClassification(c2);
 			List<Plateforme> ps1 = new ArrayList<>();
@@ -157,6 +166,8 @@ public class InitController {
 			g2.setGenre(t2);
 			g2.setModeleEconomique(m2);
 			g2.setClassification(c1);
+			
+			
 			List<Plateforme> ps2 = new ArrayList<>();
 			ps1.add(p2);
 			g2.setPlateformes(ps2);
@@ -164,6 +175,7 @@ public class InitController {
 		}
 
 		if (avisService.getAllAvis().isEmpty()) {
+			
 
 		}
 	}

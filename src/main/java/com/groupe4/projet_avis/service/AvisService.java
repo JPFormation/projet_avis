@@ -48,6 +48,9 @@ public interface AvisService {
 	List<Avis> avisPseudoDuJoueurAsc();
 	
 	List<Avis> avisPseudoDuJoueurDesc();
+	
+	List<Avis> avisNoteDesc();
+
 
 	List<Avis> avisNoteAsc();
 

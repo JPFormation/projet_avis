@@ -36,6 +36,8 @@ public class Jeu {
 	 */
 	public Jeu() {
 	}
+	
+	
 
 	/**
 	 * 
@@ -117,5 +119,7 @@ public class Jeu {
 	@JsonIgnore
     @OneToMany(mappedBy = "jeu", cascade =CascadeType.REMOVE)
     private List<Avis> avis;
+
+
 
 }

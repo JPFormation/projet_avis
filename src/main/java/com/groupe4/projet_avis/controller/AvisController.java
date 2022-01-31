@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,7 @@ import com.groupe4.projet_avis.service.AvisService;
  * Annotation ResponseBody: dit qu'il y aura des reponses(retours) sous format
  * Json qui ne sont pas contenues dans des vues
  */
+//@CrossOrigin(http://localhost 4200)// anguular à verifier avec Rishi 
 @RestController
 @RequestMapping(path = "/api")
 public class AvisController {
@@ -108,11 +110,6 @@ public class AvisController {
 		return this.avisService.avisDateEnvoiAsc();
 	}
 
-//	@GetMapping(path = "/avisByDatesEnvoiDesc")
-//	public List<Avis> avisDatesEnvoiDesc() {
-//		return this.avisService.avisDateEnvoiDesc();
-//	}
-
 	@GetMapping(path = "/avisByNomDuJeuAsc")
 	public List<Avis> avisNomDuJeuAsc() {
 		return this.avisService.avisNomDuJeuAsc();
@@ -122,12 +119,12 @@ public class AvisController {
 //	public List<Avis> avisNomDuJeuDesc() {
 //		return this.avisService.avisNomDuJeuDesc();
 //	}
-//
+
 	@GetMapping(path = "/avisByPseudoDuJoueurAsc")
 	public List<Avis> avisPseudoDuJoueurAsc() {
 		return this.avisService.avisPseudoDuJoueurAsc();
 	}
-//
+
 	@GetMapping(path = "/avisByPseudoDuJoueurDesc")
 	public List<Avis> avisPseudoDuJoueurDesc() {
 		return this.avisService.avisPseudoDuJoueurDesc();
@@ -137,11 +134,11 @@ public class AvisController {
 	public List<Avis> listAvisAsc() {
 		return this.avisService.avisNoteAsc();
 	}
-//
-//	@GetMapping(path = "/avisByNoteDesc")
-//	public List<Avis> listAvisDesc() {
-//		return this.avisService.avisNoteDesc();
-//	}
+
+	@GetMapping(path = "/avisByNoteDesc")
+	public List<Avis> listAvisDesc() {
+		return this.avisService.avisNoteDesc();
+	}
 
 	/**
 	 * Recuperer un avis specifique

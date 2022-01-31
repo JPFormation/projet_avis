@@ -42,7 +42,7 @@ public class Avis {
 	 * @param jeu
 	 * @param joueur
 	 */
-	public Avis(String description, LocalDateTime dateEnvoi, Float note, LocalDateTime dateModeration,
+	public Avis(String description, LocalDateTime dateEnvoi, float note, LocalDateTime dateModeration,
 			Moderateur moderateur, Jeu jeu, Joueur joueur) {
 		super();
 		this.description = description;
@@ -75,7 +75,7 @@ public class Avis {
 	/**
 	 * 
 	 */
-	private Float note;
+	private float note;
 
 	/**
 	 * 

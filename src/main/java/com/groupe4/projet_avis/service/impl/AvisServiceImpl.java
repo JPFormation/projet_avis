@@ -135,21 +135,17 @@ public class AvisServiceImpl implements AvisService {
 		return this.avisRepository.save(avisExist.get());
 
 	}
-	
-//	@Override
-//	public List<Avis> avisDateEnvoiDesc() {
-//		return this.avisRepository.findAllByOrderByDateEnvoidesc();
-//	}
-
 
 	@Override
 	public List<Avis> avisDateEnvoiAsc() {
 		return this.avisRepository.findAllByOrderByDateEnvoiAsc();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public List<Avis> avisNomDuJeuAsc() {
-
 		return avisRepository.findAllByOrderByJeuIdAsc();
 	}
 
@@ -173,11 +169,11 @@ public class AvisServiceImpl implements AvisService {
 		return this.avisRepository.findAllByOrderByNoteAsc();
 
 	}
-//
-//	@Override
-//	public List<Avis> avisNoteDesc() {
-//		return this.avisRepository.findAllByOrderByNoteDesc();
-//	}
+
+	@Override
+	public List<Avis> avisNoteDesc() {
+		return this.avisRepository.findAllByOrderByNoteDesc();
+	}
 	
 
 
@@ -197,5 +193,7 @@ public class AvisServiceImpl implements AvisService {
 		this.avisRepository.delete(avis.get());
 
 	}
+
+
 
 }
